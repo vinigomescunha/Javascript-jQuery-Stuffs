@@ -1,0 +1,30 @@
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Example Loading via Ajax</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                var urls = {id1: "files/file1.htm", id2: "files/file2.htm", id3: "files/file3.htm", id4: "files/style.css",id5: "files/style2.css"};
+                jQuery('.loadlink').click(function() {
+                    jQuery("#base").load(urls[jQuery(this).attr('id')]);
+                });
+                jQuery('.loadscript').click(function() {
+                    jQuery('head').append('<link rel="stylesheet" href="' + urls[jQuery(this).attr('id')] + '" type="text/css">');
+                });
+            });
+        </script>
+        <style type="text/css">#container{max-width:800px;margin:0px auto;}#menu{width:100%;border:3px solid #333333;padding:5px;}#menu a{padding:3px;}#base{width:100%;min-height:500px;border:1px solid #333333;padding:10px;}</style>
+    </head>
+    <body>
+<div id="container">
+        <div id="menu">
+            <a id="id1" class="loadlink" href="javascript:void();">FILE1</a>
+            <a id="id2" class="loadlink" href="javascript:void();">FILE2</a>
+            <a id="id3" class="loadlink" href="javascript:void();">FILE3</a>
+            <a id="id4" class="loadscript" href="javascript:void();">LOAD CSS</a>
+	    <a id="id5" class="loadscript" href="javascript:void();">LOAD CSS</a>
+        </div>
+        <div id="base"><h3>Click in the menu to load via ajax</h3></div>
+</div>
+    </body>
+</html>
